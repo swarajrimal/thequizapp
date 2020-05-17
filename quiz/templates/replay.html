@@ -1,0 +1,13 @@
+<!-- This page is not useless. Will delete later. -->
+
+{% extends "layout.html" %}
+{% block content %}
+     <h1>Your Score</h1>
+
+     <h3 class="border-top pt-3">{{ current_user.username }}, your score is {{ score }}</h3>
+
+     <h4 class="border-top pt-3">Want to play again?</h4>
+     <input type="button" value="Click Here">
+
+
+{% endblock content %}

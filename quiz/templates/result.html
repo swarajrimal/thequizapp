@@ -1,0 +1,46 @@
+<!-- This page is rendered after the 10th question is submitted. It shows the score for current user and high score table -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+     <h1>Your Score</h1>
+     <h3 class="border-top pt-3">Thank you for playing, {{ current_user.username }}! <br> Your score is: {{ score }}</h3>
+     <h4 class="border-top pt-3"><a class="ml-2 btn btn-outline-info" href="{{ url_for('replay') }}">Play Again</a></h4>
+
+     <h2 class="border-top pt-5 mb-3" style=text-align:center>High Scores</h2>
+
+
+    <div class="rTable">
+        <div class="rTableRow">
+            <div class="rTableHead">
+                <strong>Username</strong>
+            </div>
+            <div class="rTableHead">
+                <strong>Score</strong>
+            </div>
+        </div>
+        {% for user in info %}
+        <div class="rTableRow">
+            <div class="rTableCell">{{ user.username }}</div>
+            <div class="rTableCell">{{ user.score }}</div>
+        </div>
+        {% endfor %}
+
+
+        <div class="rFooterStyle">
+            <div class="links">
+                {% if next_url %}
+                    <a class="btn btn-outline-info" href="{{ next_url }}">Next</a>
+                {% endif %}
+                {% if prev_url %}
+                    <a class="btn btn-outline-info" href="{{ prev_url }}">Back</a>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock content %}

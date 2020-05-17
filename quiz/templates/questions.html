@@ -1,0 +1,25 @@
+<!-- Page used to display questions and submit the user response. Rendered dynamically 10 times. -->
+
+{% extends "layout.html" %}
+{% block content %}
+
+<form method="post">
+
+    {{ form.hidden_tag() }}
+
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">{{ limit + ". " + question }}</legend>
+     {% for subfield in form.options %}
+    <tr>
+        <td>{{ subfield }}</td>
+        <td>{{ subfield.label }}</td><br>
+    </tr>
+    {% endfor %}
+    </fieldset>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+</form>
+
+
+{% endblock content %}

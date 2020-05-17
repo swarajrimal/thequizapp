@@ -1,0 +1,42 @@
+<!-- This page is rendered when the user logs in. It shows the highscore table and a link to play quiz -->
+
+{% extends "layout.html" %}
+{% block content %}
+     <h1>Welcome to the Quiz</h1>
+
+     <h3 class="border-top pt-3">To start playing, <a class="ml-2 btn btn-outline-info" href="{{ url_for('quiz') }}">Click Here!</a></h3>
+
+     <h2 class="border-top pt-5 mb-3" style=text-align:center>High Scores</h2>
+
+     <div class="rTable">
+        <div class="rTableRow">
+            <div class="rTableHead">
+                <strong>Username</strong>
+            </div>
+            <div class="rTableHead">
+                <strong>Score</strong>
+            </div>
+        </div>
+        {% for user in info %}
+        <div class="rTableRow">
+            <div class="rTableCell">{{ user.username }}</div>
+            <div class="rTableCell">{{ user.score }}</div>
+        </div>
+        {% endfor %}
+
+
+        <div class="rFooterStyle">
+            <div class="links">
+                {% if next_url %}
+                    <a class="btn btn-outline-info" href="{{ next_url }}">Next</a>
+                {% endif %}
+                {% if prev_url %}
+                    <a class="btn btn-outline-info" href="{{ prev_url }}">Back</a>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock content %}
